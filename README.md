@@ -7,7 +7,7 @@
 
 ```bash
 # Hermes
-hermes skills install OCselected/open-source-readingskills/reading-breakpoints
+hermes skills install OCselected/open-source-reading/skills/reading-breakpoints
 
 # skills.sh
 npx skills add OCselected/open-source-reading/skills/reading-breakpoints
