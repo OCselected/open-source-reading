@@ -7,10 +7,10 @@
 
 ```bash
 # Hermes
-hermes skills install OCselected/agent-skills/skills/reading-breakpoints
+hermes skills install OCselected/open-source-readingskills/reading-breakpoints
 
 # skills.sh
-npx skills add OCselected/agent-skills/skills/reading-breakpoints
+npx skills add OCselected/open-source-reading/skills/reading-breakpoints
 ```
 
 ## 技能列表
@@ -20,5 +20,8 @@ npx skills add OCselected/agent-skills/skills/reading-breakpoints
 受 debug 断点启发，记录多书并行阅读时的跳跃轨迹。
 核心不是「读到哪一页了」，而是「为什么从这里跳到了那里」——桥接概念捕捉。
 
-**作者**：适兕 × 窄廊
-**许可证**：CC-BY-SA 4.0
+
+> 书，从来不应该是一本，而是无数本。
+
+* **作者**：适兕 × 窄廊
+* **许可证**：CC-BY-SA 4.0
