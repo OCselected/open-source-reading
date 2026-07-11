@@ -21,6 +21,8 @@ metadata:
 
 > **核心方法**：当你从一本书「跳跃」到另一本书时，那不是分心——而是一个学术直觉在试图连接两个知识域。记录这个跳跃，就是记录你的思想是如何生长的。把一本书读「厚」——不是提炼结论，而是找到它与其他书的连接、发现它背后的制度条件、追问它没有回答的问题。
 
+> **核心根由**：读书不是为了比较哪个视角「对」，而是为了站得更高、更远，减少盲区。同一个事物在不同视角下呈现不同的面——North 看效率，Ostrom 看可持续性，人类学看意义——没有哪个是错的，但任何一个单独看都有盲区。**多视角不是为了选边站，而是为了让不可见变得可见。** 这就是为什么我们同时读经济学、人类学、历史——不是为了找到唯一答案，而是为了看到单一视角必然遗漏的东西。
+
 ## 适用场景
 
 - 同时阅读 3-8 本书的研究者
@@ -77,6 +79,59 @@ AI 自动记录为一条断点，捕捉桥接概念。
 ### 3. 知识输出：从断点中提炼研究主题
 
 断点中反复出现的桥接概念，往往是潜意识在告诉我们「这里有东西值得深挖」。
+
+## 完整管线：从断点到分享
+
+reading-breakpoints 设计为一条完整管线，而非独立记录工具：
+
+```
+阅读断点 (reading-breakpoints)
+  ┣━ 捕捉桥接概念（BP-001, BP-002...）
+  ┃
+  ┣━━━ wiki 推荐条目 (osbook-book-recommendation/)
+  ┃       ┣━ 每本书：核心概念、制度分析、开源映射
+  ┃       ┗━━━ wiki-to-slides.py → slides/<slug>.md
+  ┃               ┗━ 输入 NotebookLM / AI 图像引擎 → 视觉演示文稿
+  ┃
+  ┗━━━ daily-reading/<YYYY-MM-DD>.md
+          ┣━ 使用 template.md 格式（系统提示 + slide outline）
+          ┣━ 逐条追加摘抄内容（手工或 AI 辅助）
+          ┗━ 输入 NotebookLM → 每日视觉笔记
+```
+
+### 文件
+
+| 位置 | 用途 |
+|------|------|
+| `templates/daily-slide-template.md` | 每日阅读笔记的 slide 模板，含 system prompt + 视觉风格关键词 |
+| `~/developing/markdown-to-slides/` | 项目根目录（GitHub: OCselected/markdown-to-slides） |
+| `~/developing/markdown-to-slides/daily-reading/` | 逐日阅读笔记（按日期命名） |
+| `~/developing/markdown-to-slides/slides/` | wiki 推荐条目的批量 slide 输出 |
+| `~/developing/markdown-to-slides/wiki-to-slides.py` | wiki 推荐条目 → slide 格式的转换脚本 |
+| `~/developing/markdown-to-slides/template.md` | 标准 slide 模板（含系统提示 + 视觉风格关键词） |
+
+### 工作流：每日阅读笔记
+
+当用户分享阅读摘抄时：
+
+1. 检查 `daily-reading/<YYYY-MM-DD>.md` 是否存在；如不存在，用 `templates/daily-slide-template.md` 创建
+2. 将摘抄格式化为 `## Slide N: 标题` 条目：
+   - **视觉隐喻** — 一句话描述画面（供 AI 图像生成用）
+   - **显示要点** — 摘抄原文或提炼的 3-5 个要点
+3. 追加到文件末尾
+4. 提交到 git（OCselected/markdown-to-slides 仓库）
+
+### 工作流：wiki 条目转 slide
+
+当需要准备分享材料时：
+
+```bash
+cd ~/developing/markdown-to-slides
+python3 wiki-to-slides.py                     # 批量转换所有推荐条目
+python3 wiki-to-slides.py --slug <书名slug>    # 转换单本书
+```
+
+输出为 `slides/<slug>.md`，可直接输入 NotebookLM 或其他 AI 图像引擎。
 
 ## wiki 整合
 
