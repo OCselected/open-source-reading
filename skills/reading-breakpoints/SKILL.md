@@ -133,6 +133,8 @@ reading-breakpoints 设计为一条完整管线，而非独立记录工具：
 3. 追加到文件末尾
 4. 提交到 git（OCselected/markdown-to-slides 仓库）
 
+**注意**：NotebookLM 每次最多生成 15 张 slide。因此在不超过 15 张时不需要结尾 slide，让笔记自然延伸。达到 15 张时自然结束当日文件，次日新建。
+
 ### 工作流：wiki 条目转 slide
 
 当需要准备分享材料时：
