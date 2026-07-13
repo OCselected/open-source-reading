@@ -4,7 +4,7 @@ description: |-
   阅读断点追踪（Reading Breakpoints）—— 受 debug 断点启发，记录多书并行阅读时的跳跃轨迹。
   核心不是「读到哪一页了」，而是「为什么从这里跳到了那里」—— 捕捉认知跳跃的桥接概念。
   适用于学术研究者的多书并行阅读场景。
-version: 1.0.0
+version: 1.3.0
 author: 「开源之道」·适兕 × 「开源之道」·窄廊
 license: CC-BY-SA 4.0
 platforms: [macos, linux]
@@ -72,6 +72,13 @@ metadata:
 
 ## 使用方法
 
+### 0. 黄金规则
+
+1. **每天一个新文件** — 阅读笔记按日期分文件，`daily-reading/<YYYY-MM-DD>.md`，不延用昨天的。日期变更即新建，不追加到昨日文件。
+2. **封面标题由内容决定** — 不预设标题。读完当天内容后根据实际阅读轨迹命名（如「Ostrom 到 Graeber：制度的一日巡礼」），而非使用通用占位符。
+3. **不超过 15 张不需要结尾** — NotebookLM 上限 15 张 slide，自然延伸即可。达到上限次日新建。
+4. **跳跃必记录** — 每次从一本书跳到另一本书，必然在 wiki 阅读断点追踪器中记录一条 BP-N，捕捉桥接概念并更新活跃书堆。
+
 ### 1. 日常使用：记录一次跳跃
 
 当你从一本书跳转到另一本书时，告诉你的 AI 助手：
@@ -126,12 +133,14 @@ reading-breakpoints 设计为一条完整管线，而非独立记录工具：
 
 当用户分享阅读摘抄时：
 
-1. 检查 `daily-reading/<YYYY-MM-DD>.md` 是否存在；如不存在，用 `templates/daily-slide-template.md` 创建
+1. **检查日期一致性**：用 `date` 命令获取当前日期，与已有 `daily-reading/<YYYY-MM-DD>.md` 文件名比较
+   - 如果日期一致：追加到该文件
+   - 如果日期不一致（跨天了）：先用模板创建新文件，再追加
 2. 将摘抄格式化为 `## Slide N: 标题` 条目：
-   - **视觉隐喻** — 一句话描述画面（供 AI 图像生成用）
-   - **显示要点** — 摘抄原文或提炼的 3-5 个要点
-3. 追加到文件末尾
-4. 提交到 git（OCselected/markdown-to-slides 仓库）
+   - **视觉隐喻** — 一句话描述画面（供 AI 图像生成用），避免陈词滥调，追求有张力的意象
+   - **显示要点** — 摘抄原文或提炼的 3-5 个要点，末尾追加「开源之道」点评（用 `**「开源之道」**` 标记）
+3. 摘抄与点评之间要有理论连接——不是简单罗列，而是找到与当前阅读链（BP 序列、桥接概念、制度分析框架）的关联
+4. 追加到文件末尾，提交到 git（OCselected/markdown-to-slides 仓库）
 
 **注意**：NotebookLM 每次最多生成 15 张 slide。因此在不超过 15 张时不需要结尾 slide，让笔记自然延伸。达到 15 张时自然结束当日文件，次日新建。
 
@@ -160,16 +169,15 @@ queries/reading-breakpoints.md     # (每 10 条新增活跃书堆表)
 
 ## 示例断点
 
-`references/bp-001-example.md` 包含一个完整的真实断点记录 (BP-001)：
-- 📖 NIE 导论 → 🎯 Ostrom 传记
-- 🏷 桥接概念：理论生成的制度条件
-- 展示了桥接概念如何从跳跃中涌现为可研究的问题
+`references/bp-001-example.md` — BP-001 和 BP-002（NIE 导论 → Ostrom 传记，桥接概念：理论生成的制度条件 / 制度的多面体）
+`references/bp-003-004-examples.md` — BP-003（Ostrom → Graeber，桥接概念：制度的双面光谱）和 BP-004（制度经济学 → 睡眠科学，桥接概念：受限即可能）
 
 ## 参考文件
 
 | 文件 | 内容 |
 |------|------|
 | `references/bp-001-example.md` | BP-001 和 BP-002 完整断点记录（真实示例），含桥接概念和哲学层提炼 |
+| `references/bp-003-004-examples.md` | BP-003（Ostrom→Graeber 制度的双面光谱）和 BP-004（制度→睡眠 受限即可能） |
 | `references/daily-reading-slide-workflow.md` | 每日阅读笔记 → slide 的工作流规范，含文件结构、格式、视觉风格关键词 |
 ## 注意事项
 
