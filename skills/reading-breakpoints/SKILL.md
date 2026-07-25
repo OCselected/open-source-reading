@@ -155,7 +155,7 @@ reading-breakpoints 设计为一条完整管线，而非独立记录工具：
 写入 Hugo 文章后，在 git commit 之前必须执行：
 
 ```bash
-cd /Users/lee/developing/ttoos
+cd ~/developing/ttoos
 hugo 2>&1
 ```
 
