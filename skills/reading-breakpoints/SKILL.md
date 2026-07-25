@@ -143,12 +143,12 @@ reading-breakpoints 设计为一条完整管线，而非独立记录工具：
 
 1. **检查日期一致性**：用 `date` 命令获取当前日期，与已有 `daily-reading/<YYYY-MM-DD>.md` 文件名比较。**禁止猜测日期。** 不确定时，优先追加到当天文件，等用户说「新的一天」再创建新文件
    - 如果日期一致：追加到该文件
-   - 如果日期不一致（跨天了）：先用模板创建新文件，再追加
-2. **写入前先 git pull**：在追加书摘到 `daily-reading` 文件之前，先 `cd /Users/lee/developing/markdown-to-slides && git pull`，确保本地文件与远程同步——用户可能在别处记录了笔记
-2. **关键字触发创建新文件**：当用户说「新的一天」或「继续」作为阅读分享的开头时，无论日期是否一致，先创建新文件再追加
-3. **先写文件，再分析**：用户每分享一段摘抄或感慨，在和用户讨论之前，**先追加到 daily-reading 文件**。分析再好，没写进文件就等于没发生
-4. **commit message 格式**：追加书摘到 daily-reading 文件后，commit message 使用 `YYYY-MM-DD 书摘 #N: 主题` 格式，例如 `2026-07-23 书摘 #5: 分布式创新vs开放创新`。不使用时态前缀如 `daily:` 或 `slide:`
-4. **默认成为推荐素材**：每日阅读的摘抄，无论是书籍还是论文，都默认成为每日开源推荐的素材库。追加到 daily-reading 文件后，同时将书籍/论文信息写入 `raw/articles/osbook-book-recommendation/` 目录（如果尚未收录），以便 cron job 的脚本上下文可以捕获
+   - 如果日期不一致（跨天了）：**先复制 `~/developing/markdown-to-slides/template.md` 完整内容**（NotebookLM 系统提示 + 视觉风格关键词 + 内容结构约定 + `---` 分隔线），作为新文件头，再追加封面 Slide + 书摘内容。**禁止用裸 YAML frontmatter 直接写文件。**
+2. **写入前先 git pull**：在追加书摘到 `daily-reading` 文件之前，先 `cd ~/developing/markdown-to-slides && git pull`，确保本地文件与远程同步——用户可能在别处记录了笔记
+3. **关键字触发创建新文件**：当用户说「新的一天」或「继续」作为阅读分享的开头时，无论日期是否一致，先创建新文件再追加
+4. **先写文件，再分析**：用户每分享一段摘抄或感慨，在和用户讨论之前，**先追加到 daily-reading 文件**。分析再好，没写进文件就等于没发生
+5. **commit message 格式**：追加书摘到 daily-reading 文件后，commit message 使用 `YYYY-MM-DD 书摘 #N: 主题` 格式，例如 `2026-07-23 书摘 #5: 分布式创新vs开放创新`。不使用时态前缀如 `daily:` 或 `slide:`
+6. **默认成为推荐素材**：每日阅读的摘抄，无论是书籍还是论文，都默认成为每日开源推荐的素材库。追加到 daily-reading 文件后，同时将书籍/论文信息写入 `raw/articles/osbook-book-recommendation/` 目录（如果尚未收录），以便 cron job 的脚本上下文可以捕获
 
 ### 发布到 Hugo 博客的验证步骤
 
