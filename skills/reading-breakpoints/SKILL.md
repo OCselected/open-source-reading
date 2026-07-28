@@ -150,6 +150,14 @@ reading-breakpoints 设计为一条完整管线，而非独立记录工具：
 5. **commit message 格式**：追加书摘到 daily-reading 文件后，commit message 使用 `YYYY-MM-DD 书摘 #N: 主题` 格式，例如 `2026-07-23 书摘 #5: 分布式创新vs开放创新`。不使用时态前缀如 `daily:` 或 `slide:`
 6. **默认成为推荐素材**：每日阅读的摘抄，无论是书籍还是论文，都默认成为每日开源推荐的素材库。追加到 daily-reading 文件后，同时将书籍/论文信息写入 `raw/articles/osbook-book-recommendation/` 目录（如果尚未收录），以便 cron job 的脚本上下文可以捕获
 7. **书摘必查素材库**：每次追加书摘前，先检查该书是否已在 `raw/articles/osbook-book-recommendation/` 或 `queries/wiki-book-paper-index.md` 中收录。已有则跳过，无则立即补入推荐素材库。**书摘入库是追加流程的强制步骤，不是可选动作。**
+8. **入库前必查元数据**：每个新入库的书籍/论文，必须先用 `openlibrary` skill 或 `book-cover-search` skill（豆瓣）查询元数据，包括：
+   - 书名（中英文）
+   - 作者
+   - 出版年份
+   - ISBN（如有）
+   - 封面图 URL（如有，下载到 `raw/assets/`）
+   - 豆瓣 ID（如有）
+   查询顺序：`ol_query.py --isbn <ISBN>` 优先 → `ol_query.py 书名 作者` 次之 → `book-cover-search` skill（豆瓣）兜底。**禁止无元数据的空白入库。**
 
 ### 发布到 Hugo 博客的验证步骤
 
