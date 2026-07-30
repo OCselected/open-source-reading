@@ -82,7 +82,7 @@ metadata:
 
 ### 0. 黄金规则
 
-1. **每天一个新文件** — 阅读笔记按日期分文件，`daily-reading/<YYYY-MM-DD>.md`，不延用昨天的。日期变更即新建，不追加到昨日文件。
+1. **每天一个新文件** — 阅读笔记按日期分文件，按月份组织目录：`daily-reading/<YYYY-MM>/<YYYY-MM-DD>.md`。不延用昨天的。日期变更即新建，不追加到昨日文件。
 2. **封面标题由内容决定** — 不预设标题。读完当天内容后根据实际阅读轨迹命名（如「Ostrom 到 Graeber：制度的一日巡礼」），而非使用通用占位符。
 3. **不超过 15 张不需要结尾** — NotebookLM 上限 15 张 slide，自然延伸即可。达到上限次日新建。
 4. **跳跃必记录** — 每次从一本书跳到另一本书，必然在 wiki 阅读断点追踪器中记录一条 BP-N，捕捉桥接概念并更新活跃书堆。
@@ -120,7 +120,7 @@ reading-breakpoints 设计为一条完整管线，而非独立记录工具：
   ┃       ┗━━━ wiki-to-slides.py → slides/<slug>.md
   ┃               ┗━ 输入 NotebookLM / AI 图像引擎 → 视觉演示文稿
   ┃
-  ┗━━━ daily-reading/<YYYY-MM-DD>.md
+  ┗━━━ daily-reading/<YYYY-MM>/<YYYY-MM-DD>.md
           ┣━ 使用 template.md 格式（系统提示 + slide outline）
           ┣━ 逐条追加摘抄内容（手工或 AI 辅助）
           ┗━ 输入 NotebookLM → 每日视觉笔记
