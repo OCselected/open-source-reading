@@ -226,6 +226,7 @@ queries/reading-breakpoints.md     # (每 10 条新增活跃书堆表)
 
 | 文件 | 内容 |
 |------|------|
+| `references/one-page-reading.md` | **一纸读书法**——浅田すぐる纸1枚!読書法 + Alx AI 增强版。阅读入口层：人填左半（观点/事实/好奇点），AI 填右半（问题/答案/行动），产物分别流入 daily-reading / wiki / breakpoints 三条轨道 |
 | `references/bp-001-example.md` | BP-001 和 BP-002 完整断点记录（真实示例），含桥接概念和哲学层提炼 |
 | `references/bp-003-004-examples.md` | BP-003（Ostrom→Graeber 制度的双面光谱）和 BP-004（制度→睡眠 受限即可能） |
 | `references/daily-reading-slide-workflow.md` | 每日阅读笔记 → slide 的工作流规范，含文件结构、格式、视觉风格关键词 |
