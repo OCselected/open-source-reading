@@ -182,6 +182,18 @@ hugo 2>&1
 6. 追加到文件末尾。**注意：当 slide 总数超过 15 张时，必须将文件分割为多个部分**，文件名加 `-part-1`、`-part-2` 等序号，每部分不超过 15 张。分割后的封面保留系统提示并标注 Part N。
 7. 提交到 git（OCselected/markdown-to-slides 仓库）
 
+### 工作流：书店控制场 × 阅读断点
+
+当需要把阅读过程理解为控制场，或设计 Agent-guided Reading Breakpoints 时，读取：
+
+`references/bookshop-control-field-reading-agent.md`
+
+核心用途：
+- 把 Reader / Book / Interaction / Hypothesis / Policy 映射为 Reading Agent 的对象模型。
+- 把书店 Misfit 迁移为 Reader / Source / Classification / Service Misfit。
+- 记录“为什么从 A 跳到 B”，而不是只记录推荐了 B。
+- 将重复出现的桥接概念升级为 wiki 分析主题。
+
 ### 工作流：引用网作为阅读管线
 
 当分析一篇论文的引用网络时，**引用网本身就是一条阅读管线**。顺着引用往下走：
