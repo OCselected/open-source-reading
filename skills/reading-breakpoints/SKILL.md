@@ -182,6 +182,18 @@ hugo 2>&1
 6. 追加到文件末尾。**注意：当 slide 总数超过 15 张时，必须将文件分割为多个部分**，文件名加 `-part-1`、`-part-2` 等序号，每部分不超过 15 张。分割后的封面保留系统提示并标注 Part N。
 7. 提交到 git（OCselected/markdown-to-slides 仓库）
 
+### 工作流：World Reading 世界阅读
+
+当书摘、新闻、项目事件、政策或 AI Agent 行为不只是“读到一个片段”，而是形成现实世界的认知跳跃时，使用独立 skill：
+
+`skills/world-reading/SKILL.md`
+
+核心用途：
+- 将现实事件转化为 Reading Breakpoint。
+- 将强桥接升级为 Open Source Regime Signal。
+- 保留 daily-reading 的阅读现场，把沉淀放进 wiki ledger。
+- 避免把摘要误当成制度判断。
+
 ### 工作流：书店控制场 × 阅读断点
 
 当需要把阅读过程理解为控制场，或设计 Agent-guided Reading Breakpoints 时，读取：
