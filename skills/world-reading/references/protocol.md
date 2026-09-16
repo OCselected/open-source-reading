@@ -43,3 +43,30 @@ Escalate a BP into a regime signal only if all are true:
 - It can be checked against external evidence.
 - It has future tests.
 - It does not rely only on personal intuition.
+
+
+## Architecture / Flow Diagram
+
+The World Reading control field is visualized in:
+
+```text
+~/developing/open-source-way-wiki/queries/world-reading-architecture.html
+```
+
+Use the diagram when explaining the relationship between:
+
+```text
+潜在驱动力
+→ Agent + LLM 阅读识别器
+→ World Reading 断点结构
+→ Reading Breakpoint Ledger
+→ Regime Signals
+→ Weekly Review
+→ Wiki / Essay / Osbook
+```
+
+Core framing:
+
+```text
+目标：不是预测用户喜欢什么，而是照亮他在寻找什么。
+```
